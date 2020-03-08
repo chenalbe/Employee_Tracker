@@ -175,37 +175,35 @@ function viewEmployee(){
 };
 
 function updateRole(){
-    let array = [];
+    let roleID = [];
     let employeeList = [];
-    connection.query('SELECT id as value, title as name FROM role', function(err, result, field){
+    connection.query(`select concat(first_name, ' ', last_name) as name, id as value from employee`, function(err, result){
         if (err) throw err;
-        array = JSON.parse(JSON.stringify(result));
-        connection.query(`select concat(first_name, ' ', last_name) as name from employee`, function(err, result, field){
-            if (err) throw err;
-            employeeList = JSON.parse(JSON.stringify(result));
-            question = [
-                {
+        employeeList = JSON.parse(JSON.stringify(result));
+        inquirer.prompt({
+            type: "list",
+            message: "Please choose the employee for the role update.",
+            name: "name",
+            choices: employeeList
+        }).then((answerName)=>{
+            connection.query('SELECT id as value, title as name from role', function(err, result){
+                if (err) throw err;
+                roleID = JSON.parse(JSON.stringify(result));
+                inquirer.prompt({
                     type: "list",
-                    message: "Please choose the employee to update.",
-                    name: "employee",
-                    choices: employeeList
-                },
-                {
-                    type: "list",
-                    message: "Please choose a new role for the employee.",
-                    name: "roleID",
-                    choices: array
-                }
-            ];
-            inquirer.prompt(question).then(answer => {
-                connection.query('Update employee set role_id = ? where id = ?', [answer.employee, answer.roleID], function(err, result){
-                    if (err) throw err;
-                    console.log("Success!")
-                    init();
-                });
+                    message: "Please choose the new title.",
+                    name: "newTitle",
+                    choices: roleID
+                }).then((answer2)=>{
+                    connection.query('update employee set role_id = ? where id = ?', [answer2.newTitle, answerName.name], function(err, res){
+                        if (err) throw err;
+                        console.log("Update successful!");
+                        init();
+                    });
+
+                })
             });
-        })
+        });
     });
 };
-
 init();
