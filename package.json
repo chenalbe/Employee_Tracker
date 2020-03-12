@@ -1,0 +1,30 @@
+{
+  "name": "Employee_Tracker",
+  "version": "1.0.0",
+  "description": "Unit 12 MySQL Homework: Employee Tracker",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest --verbose test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chenalbe/Employee_Tracker"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chenalbe/Employee_Tracker/issues"
+  },
+  "homepage": "https://github.com/chenalbe/Employee_Tracker#readme",
+  "dependencies": {
+    "inquirer": "^6.5.2",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
+}
