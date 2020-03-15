@@ -1,5 +1,5 @@
 {
-  "name": "Employee_Tracker",
+  "name": "employee_tracker",
   "version": "1.0.0",
   "description": "Unit 12 MySQL Homework: Employee Tracker",
   "main": "index.js",
@@ -12,9 +12,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chenalbe/Employee_Tracker"
+    "url": "git+https://github.com/chenalbe/Employee_Tracker.git"
   },
-  "author": "",
+  "author": "Ta-Chung Chen",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/chenalbe/Employee_Tracker/issues"
